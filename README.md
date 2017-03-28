@@ -49,7 +49,7 @@ gcloud beta compute instances create eshvk-dl-fastai \
 
 - Create a secondary SSD disk and mount it.
 ```
-gcloud compute disks create eshvk-dl-fastai-disk --size 10TB --type pd-ssd --zone us-east1-d 
+gcloud compute disks create eshvk-dl-fastai-disk --size 10TB --type pd-ssd --zone us-east1-d
 
 gcloud compute instances attach-disk eshvk-dl-fastai --disk  eshvk-dl-fastai-disk --zone us-east1-d
 
@@ -77,7 +77,7 @@ gcloud compute copy-files user-install.sh eshvk-dl-fastai:~/user-install.sh  --z
 
 - SSH and run the script using `./user-install.sh`.
 
-- Firewall forwarding rules: 
+- Firewall forwarding rules:
 
 ```
 # this enables jupyter to talk to the external world.
@@ -86,6 +86,7 @@ gcloud compute firewall-rules create default-allow-jupyter --allow tcp:8888  --t
 gcloud compute instances add-tags eshvk-dl-fastai --tags allow-jupyter --zone us-east1-d
 
 ```
+
 
 ## Technical Notes
 Here is a very brief overview of the different moving parts.
