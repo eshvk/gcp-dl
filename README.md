@@ -89,6 +89,8 @@ gcloud compute instances add-tags eshvk-dl-fastai --tags allow-jupyter --zone us
 
 ```
 
+- Now SSH into the machine, do 'jupyter notebook' and log on on your browser with something like `http://<external-ip>:8888`.
+
 ### docker-machine based Approach
 
 - Install [docker-machine](https://docs.docker.com/machine/install-machine/)
