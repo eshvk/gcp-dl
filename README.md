@@ -89,7 +89,7 @@ gcloud compute copy-files auth_and_start.sh eshvk-dl-fastai:/usr/local/bin/auth_
 ```
 
 
-- SSH in, move the files `auth_and_start.sh`, `lookup_value_from_json` to `/usr/local/bin`run the script using `./user-install.sh`.
+- SSH in, move the files `auth_and_start.sh`, `lookup_value_from_json` to `/usr/local/bin`, run the script using `./user-install.sh`.
 
 - Firewall forwarding rules:
 
@@ -101,8 +101,8 @@ gcloud compute instances add-tags eshvk-dl-fastai --tags allow-jupyter --zone us
 
 ```
 
-- Now SSH into the machine, do 'jupyter notebook' and log on on your browser with something like `http://<external-ip>:8888`.
+- Now SSH into the machine, do `auth_and_start.sh jupyter notebook` and log on on your browser with something like `http://<external-ip>:8888`. The `auth_and_start.sh` bit gets you authenticated with Google Magic.
 
 
 ## Credits
-This is based on [fast.ai](https://github.com/fastai/courses/tree/master/setup)'s course setup.
+This is based on [fast.ai](https://github.com/fastai/courses/tree/master/setup)'s course setup and [easy-python-ml](https://github.com/flylo/easy-python-ml) by ZacP.
