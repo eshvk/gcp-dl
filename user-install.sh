@@ -41,8 +41,19 @@ echo "c.NotebookApp.password = u'"$jupass"'" >> $HOME/.jupyter/jupyter_notebook_
 echo "c.NotebookApp.ip = '*'
 c.NotebookApp.open_browser = False" >> $HOME/.jupyter/jupyter_notebook_config.py
 
+# Install Google Cloud Storage Tools to get data from GCS.
+pip install google-api-python-client google-cloud-storage
+echo "export GOOGLE_APPLICATION_CREDENTIALS=\"$HOME/google_service_key.json\"" >> ~/.bashrc
+export GOOGLE_APPLICATION_CREDENTIALS="$HOME/google_service_key.json"
+ curl https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip > google-cloud-sdk.zip \
+ && unzip google-cloud-sdk.zip && rm google-cloud-sdk.zip \
+ && google-cloud-sdk/install.sh --usage-reporting=true --path-update=true --bash-completion=true \
+ && google-cloud-sdk/bin/gcloud config set --installation component_manager/disable_update_check true \
+ && sed -i -- 's/\"disable_updater\": false/\"disable_updater\": true/g' google-cloud-sdk/lib/googlecloudsdk/core/config.json
+echo "export PATH=\"$HOME/google-cloud-sdk/bin:\$PATH\"" >> ~/.bashrc
+
 # clone the fast.ai course repo and prompt to start notebook
 cd ~
 git clone https://github.com/fastai/courses.git
-echo "\"jupyter notebook\" will start Jupyter on port 8888"
+echo "\"auth_and_start.sh jupyter notebook\" will start Jupyter on port 8888"
 echo "If you get an error instead, try restarting your session so your $PATH is updated"

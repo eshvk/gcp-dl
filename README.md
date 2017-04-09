@@ -71,13 +71,25 @@ sudo mount -o discard,defaults /dev/sdb /mnt/disks/persistent-data
 echo UUID=`sudo blkid -s UUID -o value /dev/sdb` /mnt/disks/persistent-data ext4 discard,defaults,nofail 0 2 | sudo tee -a /etc/fstab
 ```
 
+- Get GCS Service Key (to run notebook/jobs remotely)
+In order to run a notebook or jobs remotely, [get a service key in the GCS console](https://console.cloud.google.com/iam-admin/serviceaccounts/). Once you've downloaded this key, rename it `google_service_key.json` and move it to the root directory of the repository.
+
 - Copy the script `user-install.sh` to the gcloud instance like so:
 
 ```
 gcloud compute copy-files user-install.sh eshvk-dl-fastai:~/user-install.sh  --zone us-east1-d
 ```
+- Copy the service key `google_service_key.json` over similarly.
+```
+gcloud compute copy-files google_service_key.json eshvk-dl-fastai:~/google_service_key.json  --zone us-east1-d
+```
+- Copy the files `auth_and_start.sh` and `lookup_value_from_json` over.
+```
+gcloud compute copy-files auth_and_start.sh eshvk-dl-fastai:/usr/local/bin/auth_and_start.sh  --zone us-east1-d
+```
 
-- SSH and run the script using `./user-install.sh`.
+
+- SSH in, move the files `auth_and_start.sh`, `lookup_value_from_json` to `/usr/local/bin`run the script using `./user-install.sh`.
 
 - Firewall forwarding rules:
 
