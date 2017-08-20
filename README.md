@@ -77,15 +77,15 @@ In order to run a notebook or jobs remotely, [get a service key in the GCS conso
 - Copy the script `user-install.sh` to the gcloud instance like so:
 
 ```
-gcloud compute copy-files user-install.sh eshvk-dl-fastai:~/user-install.sh  --zone us-east1-d
+gcloud compute scp user-install.sh eshvk-dl-fastai:~/user-install.sh  --zone us-east1-d
 ```
 - Copy the service key `google_service_key.json` over similarly.
 ```
-gcloud compute copy-files google_service_key.json eshvk-dl-fastai:~/google_service_key.json  --zone us-east1-d
+gcloud compute scp google_service_key.json eshvk-dl-fastai:~/google_service_key.json  --zone us-east1-d
 ```
 - Copy the files `auth_and_start.sh` and `lookup_value_from_json` over.
 ```
-gcloud compute copy-files auth_and_start.sh eshvk-dl-fastai:/usr/local/bin/auth_and_start.sh  --zone us-east1-d
+gcloud compute scp auth_and_start.sh eshvk-dl-fastai:~/auth_and_start.sh  --zone us-east1-d
 ```
 
 
