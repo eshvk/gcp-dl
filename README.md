@@ -86,14 +86,14 @@ gcloud compute scp google_service_key.json eshvk-dl-fastai:~/google_service_key.
 - Copy the files `auth_and_start.sh` and `lookup_value_from_json` over.
 ```
 gcloud compute scp auth_and_start.sh eshvk-dl-fastai:~/auth_and_start.sh  --zone us-east1-d
-gcloud compute scp lookup_value_from_json eshvk-dl-fastai:~/lookup_value_from_json.sh  --zone us-east1-d
+gcloud compute scp lookup_value_from_json eshvk-dl-fastai:~/lookup_value_from_json  --zone us-east1-d
 ```
 
 - SSH in, move the files `auth_and_start.sh`, `lookup_value_from_json` to `/usr/local/bin`.
 
 ```
 sudo mv auth_and_start.sh /usr/local/bin
-Sudo mv lookup_value_from_json /usr/local/bin
+sudo mv lookup_value_from_json /usr/local/bin
 ```
 
 - Run the script using `./user-install.sh`.
